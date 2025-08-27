@@ -10,7 +10,7 @@ export default function Header() {
     <>
       <header className="header">
         <div className="header-container">
-          <h1 className="logo">SpectraFlow</h1>
+          <h1 className="logo">BitSpectra</h1>
           <nav>
             <ul className="nav-links">
               <li><a href="/">Home</a></li>
