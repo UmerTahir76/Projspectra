@@ -54,3 +54,110 @@
 .btn-primary:hover {
   background-color: #059669;
 }
+
+
+
+/* ================= Buttons ================= */
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+  padding: 0.6rem 1.5rem;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  color: white;
+  border: none;
+}
+/*gap both button*/
+.btn-primary + .btn-primary {
+  margin-left: 1.5rem;
+}
+
+/* Login Button */
+.btn-primary.login {
+  background: linear-gradient(135deg, #3b82f6, #60a5fa);
+}
+
+.btn-primary.login:hover {
+  background: linear-gradient(135deg, #2563eb, #3b82f6);
+  transform: translateY(-4px) scale(1.08);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+/* Get Started Button */
+.btn-primary.get-started {
+  background: linear-gradient(135deg, #10b981, #34d399);
+}
+
+.btn-primary.get-started:hover {
+  background: linear-gradient(135deg, #059669, #10b981);
+  transform: translateY(-4px) scale(1.08);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+/* Ripple effect for buttons */
+.btn-primary::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.1);
+  border-radius: 10px;
+  transform: scale(0);
+  transition: transform 0.5s ease;
+  z-index: 0;
+}
+
+.btn-primary:hover::after {
+  transform: scale(1);
+}
+
+/* ================= Modal ================= */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+  opacity: 0;
+  animation: fadeIn 0.5s forwards;
+}
+
+.modal-card {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  transform: translateY(-20px);
+  animation: slideUp 0.5s forwards;
+}
+
+/* Close button */
+.modal-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: #111827;
+  transition: transform 0.3s ease;
+}
+
+.modal-close:hover {
+  transform: rotate(90deg);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  to { transform: translateY(0); }
+}
