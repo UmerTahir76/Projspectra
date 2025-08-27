@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Header.css";
 import Authen from "../../pages/Landing/Authen.jsx";
 
+
 export default function Header() {
   const [showAuth, setShowAuth] = useState(false);
 
