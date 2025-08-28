@@ -111,3 +111,12 @@ footer {
   margin-top: 50px;
   border-top: 3px solid #0a66c2;
 }
+.carousel-control-prev,
+.carousel-control-next {
+  width: 5%; /* make button area larger */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(1); /* makes default icons dark */
+}

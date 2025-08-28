@@ -3,19 +3,32 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 const Contact = () => {
   const team = [
     {
-      name: "Muhammad Daaem Butt",
+      name: "Kamran Akbar",
       role: "Director",
-      image: "public/sim.jpg",
-      linkedin: "https://www.linkedin.com/in/muhammad-daaem-451900379/",
-      phone: "+92-330-5355769",
+      image: "public/kam.jpeg",
+      linkedin: "https://www.linkedin.com/in/mkamranakbar/",
+      Email: "mkamranakbar@outlook.com",
+      phone:" +92-321-8600834"
+    
     },
     {
       name: "Umer Tahir",
       role: "Founder",
       image: "/umer.jpg",
       linkedin: "https://www.linkedin.com/in/umer-ali-tahir/",
+      Email: "https://github.com/UmerTahir76",
+      
       phone: "+92-304-9366595",
     },
+    {
+      name: "Muhammad Daaem Butt",
+      role: "Co-Founder",
+      image: "public/sim.jpg",
+      linkedin: "https://www.linkedin.com/in/muhammad-daaem-butt/",
+      Email : "daaembutt.official@gmail.com",
+      phone: "+92-330-5355769",
+    }
+    
   ];
 
   return (
@@ -52,16 +65,17 @@ const Contact = () => {
                   className="rounded-circle mb-3 shadow-lg"
                   alt={member.name}
                   style={{
-                    width: "200px",
-                    height: "200px",
+                    width: "180px",
+                    height: "180px",
                     objectFit: "cover",
-                    border: "5px solid #0dd1fdff",
+                    border: "5px solid #111827",
                   }}
                 />
                 <h5 className="fw-bold">{member.name}</h5>
-                <p className="text-muted">{member.role}</p>
-                <p>
-                  <strong>LinkedIn:</strong>{" "}
+                <p className="text-muted fst-italic">{member.role}</p>
+                <p className="d-flex align-items-center justify-content-center">
+                  <img src="public/3228550_app_b_w_linkedin_logo_media_icon.png" alt="linkedin logo" style={{ width: "20px", height: "20px", marginRight: "8px" }} />
+                  <strong>LinkedIn: </strong>{" "}
                   <a
                     href={member.linkedin}
                     target="_blank"
@@ -70,9 +84,22 @@ const Contact = () => {
                     {member.linkedin}
                   </a>
                 </p>
-                <p>
-                  <strong>Phone:</strong> {member.phone}
+                <p className="d-flex align-items-center justify-content-center">
+                  <img src="public/email.png" alt="github logo"
+                  style={{ width: "20px", height: "20px", marginRight: "8px" }}></img>
+                  <strong>Email: </strong> {member.Email}
                 </p>
+  <p className="d-flex align-items-center">
+  <img 
+    src="/—Pngtree—phone icon in solid circle_5552270.png" 
+    alt="phone icon" 
+    style={{ width: "20px", height: "20px", marginRight: "8px" }} 
+  />
+  <a href={`tel:${member.phone}`} className="text-dark text-decoration-none">
+    {member.phone}
+  </a>
+</p>
+
               </div>
             </div>
           ))}
@@ -80,23 +107,25 @@ const Contact = () => {
 
         {/* Carousel Controls */}
         <button
-          className="carousel-control-prev"
-          type="button"
-          data-bs-target="#aboutCarousel"
-          data-bs-slide="prev"
-        >
-          <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span className="visually-hidden">Previous</span>
-        </button>
-        <button
-          className="carousel-control-next"
-          type="button"
-          data-bs-target="#aboutCarousel"
-          data-bs-slide="next"
-        >
-          <span className="carousel-control-next-icon" aria-hidden="true"></span>
-          <span className="visually-hidden">Next</span>
-        </button>
+  className="carousel-control-prev"
+  type="button"
+  data-bs-target="#aboutCarousel"
+  data-bs-slide="prev"
+>
+  <i className="fas fa-chevron-left fa-3x text-dark"></i>
+  <span className="visually-hidden">Previous</span>
+</button>
+
+<button
+  className="carousel-control-next"
+  type="button"
+  data-bs-target="#aboutCarousel"
+  data-bs-slide="next"
+>
+  <i className="fas fa-chevron-right fa-3x text-dark"></i>
+  <span className="visually-hidden">Next</span>
+</button>
+
       </div>
 
       {/* Bio / About Section */}
