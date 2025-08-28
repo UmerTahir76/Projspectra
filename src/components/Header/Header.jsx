@@ -8,9 +8,13 @@ export default function Header() {
 
   return (
     <>
+    <title>BitSpectra
+    </title>
+
       <header className="header">
         <div className="header-container">
-          <h1 className="logo">BitSpectra</h1>
+          
+         <h1>BitSpectra</h1>
           <nav>
             <ul className="nav-links">
               <li><a href="/">Home</a></li>

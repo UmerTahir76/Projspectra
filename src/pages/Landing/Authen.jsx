@@ -4,6 +4,16 @@ import "./Authen.css";
 export default function Authen({ closeModal }) {
   const [showPassword, setShowPassword] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
+  const [showForgotPassword, setShowForgotPassword] = useState(false);
+  const [resetEmail, setResetEmail] = useState("");
+
+  const handleForgotPasswordSubmit = (e) => {
+    e.preventDefault();
+    // Here you would call your backend API to send a reset password email
+    alert(`Password reset link sent to ${resetEmail}`);
+    setShowForgotPassword(false);
+    setResetEmail("");
+  };
 
   return (
     <div className="authen-modal">
@@ -13,7 +23,38 @@ export default function Authen({ closeModal }) {
           &times;
         </button>
 
-        {showRegister ? (
+        {showForgotPassword ? (
+          <>
+            <h2 className="authen-title">Reset Your Password</h2>
+            <form className="authen-form" onSubmit={handleForgotPasswordSubmit}>
+              <div className="form-group">
+                <input
+                  type="email"
+                  placeholder="Enter your registered email"
+                  required
+                  value={resetEmail}
+                  onChange={(e) => setResetEmail(e.target.value)}
+                />
+              </div>
+
+              <button className="submit-btn" type="submit">
+                Send Reset Link
+              </button>
+
+              <p className="switch-auth">
+                Remembered your password?{" "}
+                <span
+                  onClick={() => {
+                    setShowForgotPassword(false);
+                    setShowRegister(false);
+                  }}
+                >
+                  Back to Login
+                </span>
+              </p>
+            </form>
+          </>
+        ) : showRegister ? (
           <>
             <h2 className="authen-title">Join the Spectra-Family</h2>
             <form className="authen-form">
@@ -46,7 +87,11 @@ export default function Authen({ closeModal }) {
 
               <div className="social-login">
                 <button className="google-btn">
-                  <img src="/google-outline.svg" alt="Google" className="google-logo" />
+                  <img
+                    src="/google-outline.svg"
+                    alt="Google"
+                    className="google-logo"
+                  />
                   Continue with Google
                 </button>
               </div>
@@ -59,7 +104,7 @@ export default function Authen({ closeModal }) {
           </>
         ) : (
           <>
-            <h2 className="authen-title">Welcome Spectra-Family!</h2>
+            <h4 className="authen-title">Welcome to Spectra Hub</h4>
             <form className="authen-form">
               <div className="form-group">
                 <input type="email" placeholder="Enter your email" required />
@@ -78,7 +123,13 @@ export default function Authen({ closeModal }) {
                 </span>
               </div>
 
-              <p className="forgot-pass">Forgot Password?</p>
+              <p
+                className="forgot-pass"
+                onClick={() => setShowForgotPassword(true)}
+                style={{ cursor: "pointer", color: "#007bff" }}
+              >
+                Forgot Password?
+              </p>
 
               <button className="submit-btn" type="submit">
                 Login
