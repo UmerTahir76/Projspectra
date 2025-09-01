@@ -1,31 +1,47 @@
-import React, { useContext } from "react";
-import  {ProjectContext}  from "../../context/ProjectProvider.jsx";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import "./ProjectCard.css";
 
-export default function ProjectCard(){
-  const { projects } = useContext(ProjectContext);
+export default function ProjectCard({ project }) {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/projects/${project.projectId}`);
+  };
 
   return (
-    <div className="project-list">
-      {projects.map((project) => (
-        <div key={project.id} className="project-card">
-          <img src={project.imageUrl} alt={project.title} />
-          <h3>{project.title}</h3>
-          <p>{project.description}</p>
-          <div className="tags">
-            {project.tags.map((t) => (
-              <span key={t} className="tag">
-                {t}
-              </span>
-            ))}
-          </div>
-          <div className="stats">
-            <span>👁️ {project.views}</span>
-            <span>❤️ {project.likes}</span>
-          </div>
-        </div>
-      ))}
+    <div className="project-card" onClick={handleClick}>
+      {/* Cover Image from Cloudinary */}
+      <img src={project.coverImage} alt={project.projectTitle} />
+
+      {/* Project Title */}
+      <h3>{project.projectTitle}</h3>
+
+      {/* Project Description */}
+      <p>{project.description}</p>
+
+      {/* Tags - Project Category ko bhi include karein */}
+      <div className="tags">
+        {/* Pehle project category show karein */}
+        {project.projectCategory && (
+          <span key="category" className="tag">
+            {project.projectCategory}
+          </span>
+        )}
+        
+        {/* Phir additional tags */}
+        {project.tags?.map((tag) => (
+          <span key={tag} className="tag">
+            {tag}
+          </span>
+        ))}
+      </div>
+
+      {/* Stats */}
+      <div className="stats">
+        <span>👁️ {project.views || 0}</span>
+        <span>❤️ {project.likes || 0}</span>
+      </div>
     </div>
   );
-};
-
+}

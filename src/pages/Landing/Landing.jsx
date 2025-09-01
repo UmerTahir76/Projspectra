@@ -1,91 +1,62 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Landing.css";
 
 export default function Landing() {
 
-  const [searchQuery, setSearchQuery] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("All");
-  const [viewMode, setViewMode] = useState("grid");
-
-  const categories = ["All", "Web Dev", "Mobile", "AI/ML", "Blockchain", "Design"];
-
-  // const filtered = mockProjects.filter((p) => {
-  //   const q = searchQuery.toLowerCase();
-  //   const matchesSearch =
-  //     p.title.toLowerCase().includes(q) ||
-  //     p.description.toLowerCase().includes(q) ||
-  //     p.tags.some((tag) => tag.toLowerCase().includes(q));
-
-  //   const matchesCategory =
-  //     selectedCategory === "All" ||
-  //     p.tags.some((tag) =>
-  //       tag.toLowerCase().includes(selectedCategory.toLowerCase())
-  //     );
-
-  //   return matchesSearch && matchesCategory;
-  // });
-
   const Hero = () => (
     <section className="hero">
+      {/* Overlay */}
       <div className="hero-overlay" />
+
+      {/* Content */}
       <div className="hero-content">
-        <h1>
-          Build. Share. <span className="highlight">Inspire.</span>
+        {/* Tagline */}
+        <div className="hero-tagline">
+          ✨ Showcase Your Best Work
+        </div>
+
+        {/* Title */}
+        <h1 className="hero-title">
+          Your Projects, <span className="text-gradient">Beautifully Presented</span>
         </h1>
-        <p>Showcase your best projects and discover amazing work from creators.</p>
+
+        {/* Subtitle */}
+        <p className="hero-subtitle">
+          Join thousands of creators, developers, and designers showcasing their work on Projspectra. 
+          Upload, organize, and share your projects with the world.
+        </p>
+
+        {/* Buttons */}
         <div className="hero-buttons">
-          <a href="#projects" className="btn primary">Explore Projects</a>
-          <a href="#" className="btn secondary">Submit Work</a>
+          <a href="#projects" className="btn btn-gradient">Get Started Free →</a>
+          <a href="#projects" className="btn btn-gradient-explore">Explore Projects</a>
+        </div>
+
+        {/* Stats */}
+        <div className="hero-stats">
+          <div className="stat-card">
+            <div className="stat-icon">⚡</div>
+            <div className="stat-number">10K+</div>
+            <div className="stat-label">Projects Hosted</div>
+          </div>
+          <div className="stat-card">
+            <div className="stat-icon">❤️</div>
+            <div className="stat-number">5K+</div>
+            <div className="stat-label">Active Creators</div>
+          </div>
+          <div className="stat-card">
+            <div className="stat-icon">✨</div>
+            <div className="stat-number">50K+</div>
+            <div className="stat-label">Project Views</div>
+          </div>
         </div>
       </div>
     </section>
   );
 
-  // const ProjectGrid = () => (
-  //   <section id="projects" className="project-section">
-  //     <div className="controls">
-  //       <input
-  //         type="text"
-  //         value={searchQuery}
-  //         onChange={(e) => setSearchQuery(e.target.value)}
-  //         placeholder="Search projects..."
-  //       />
-  //       <select
-  //         value={selectedCategory}
-  //         onChange={(e) => setSelectedCategory(e.target.value)}
-  //       >
-  //         {categories.map((c) => (
-  //           <option key={c} value={c}>{c}</option>
-  //         ))}
-  //       </select>
-  //       <div className="view-buttons">
-  //         <button
-  //           onClick={() => setViewMode("grid")}
-  //           className={viewMode === "grid" ? "active" : ""}
-  //         >
-  //           Grid
-  //         </button>
-  //         <button
-  //           onClick={() => setViewMode("list")}
-  //           className={viewMode === "list" ? "active" : ""}
-  //         >
-  //           List
-  //         </button>
-  //       </div>
-  //     </div>
-
-  //     <div className={viewMode === "grid" ? "grid" : "list"}>
-  //       {filtered.map((project) => (
-  //         <ProjectCard key={project.id} project={project} />
-  //       ))}
-  //     </div>
-  //   </section>
-  // );
-
   return (
     <div className="landing">
       <Hero />
-      {/* <ProjectGrid /> */}
     </div>
   );
 }

@@ -1,0 +1,224 @@
+.projects-page {
+  text-align: center;
+  padding: 40px 20px; /* CHANGE THIS LINE - Top-Bottom: 40px, Left-Right: 20px */
+  max-width: 2000px;
+  margin: 0 auto;
+  background: url("https://images.ctfassets.net/nnkxuzam4k38/4lBzkVBmJ0qvFJ90SJHEdV/7645fc49f7f1fb4a8c31a94fc4c97f4d/black-particles-background.png") center/cover no-repeat;
+
+  min-height: 100vh; /* ADD THIS LINE - Minimum height for spacing */
+}
+
+.projects-page h1 {
+  margin-bottom: 50px;
+  color: white; /* Dark color for light background */
+  font-size: 3.5rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+  display: inline-block;
+  padding-bottom: 15px;
+}
+
+.projects-page h1::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: #2c3e50; /* Solid dark color */
+  border-radius: 2px;
+}
+
+.projects-page h1::before {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 4px;
+  background: #2c3e50; /* Solid dark color */
+  border-radius: 2px;
+  opacity: 0.7;
+}
+
+/* Animation effect */
+.projects-page h1 {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .projects-page h1 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+  }
+  
+  .projects-page h1::after {
+    width: 60px;
+    height: 3px;
+  }
+  
+  .projects-page h1::before {
+    width: 30px;
+    height: 3px;
+  }
+}
+.search-section {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.search-section input {
+  width: 60%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  background: #eee;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease-in-out;
+}
+
+.tab-btn:hover {
+  background: #ddd;
+}
+
+.tab-btn.active {
+  background: #007bff;
+  color: white;
+}
+
+/* Project.css */
+.user-welcome {
+  background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+  padding: 25px 30px;
+  border-radius: 15px;
+  margin-bottom: 50px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0, 123, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #0a3d62;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.user-welcome:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 123, 255, 0.5);
+}
+
+.user-welcome::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.3), transparent 70%);
+  animation: pulseGlow 4s ease-in-out infinite;
+  pointer-events: none;
+  border-radius: 15px;
+  z-index: 0;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.9;
+  }
+}
+
+.user-welcome p {
+  margin: 10px 0;
+  font-size: 1.3rem;
+  font-weight: 700;
+  position: relative;
+  z-index: 1;
+  color: #0a3d62;
+  letter-spacing: 0.05em;
+  line-height: 1.5;
+  text-shadow:
+    0 2px 4px rgba(255, 255, 255, 0.85),
+    0 0 8px rgba(0, 123, 255, 0.3);
+  transition: color 0.3s ease;
+}
+
+.user-welcome p::before {
+  content: '“';
+  position: absolute;
+  left: -25px;
+  top: 0;
+  font-size: 3rem;
+  color: #74b9ff;
+  font-weight: 900;
+  line-height: 1;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.user-welcome p::after {
+  content: '”';
+  position: absolute;
+  right: -25px;
+  bottom: 0;
+  font-size: 3rem;
+  color: #74b9ff;
+  font-weight: 900;
+  line-height: 1;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+
+
+.auth-message {
+  text-align: center;
+  padding: 2rem;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  margin: 2rem 0;
+}
+
+.auth-message p {
+  margin: 0;
+  color: #666;
+}
+
+/* Baaki ka CSS aapka existing hai */

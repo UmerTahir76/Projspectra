@@ -100,8 +100,8 @@
 /* Close button left with slide-in animation */
 .close-btn {
   position: absolute;
-  left: -60px;
-  top: 20px;
+  right: 0px;
+  top: 0px;
   width: 45px;
   height: 45px;
   font-size: 2rem;
@@ -187,21 +187,6 @@
   animation: fadeInUp 0.5s ease forwards;
 }
 
-/* Close button */
-.close-btn {
-  position: absolute;
-  left: 1rem; /* left side */
-  top: 1rem;
-  font-size: 1.8rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-.close-btn:hover {
-  transform: rotate(90deg);
-  color: #3b82f6;
-}
 
 /* Form & inputs */
 .authen-form {
@@ -332,32 +317,6 @@
   color: #10b981;              /* change color on hover */
 }
 
-
-/* Close button */
-.close-btn {
-  position:absolute;
-  top:55px;
-  right: 50px; /* top-right */
-  font-size: 2rem;
-  font-weight: bold;
-  background: rgba(0,0,0,0.5);
-  color: white;
-  width: 45px;
-  height: 45px;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  animation: slideIn 0.4s ease forwards;
-  transition: all 0.3s ease;
-}
-
-.close-btn:hover {
-  transform: rotate(90deg) scale(1.2);
-  background: rgba(255,0,0,0.8);
-}
 
 /* Slide-in animation */
 @keyframes slideIn {
