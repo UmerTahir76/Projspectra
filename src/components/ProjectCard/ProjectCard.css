@@ -137,3 +137,15 @@
     padding: 20px 10px;
   }
 }
+
+
+/* 
+.project-card p {
+  font-size: 0.9rem;
+  color: #ccc;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* show max 2 lines */
+  /* -webkit-box-orient: vertical;
+} */ 

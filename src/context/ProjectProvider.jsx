@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
-import { fetchUserProjects } from "../utils/FetchProjects.jsx";
+import { listenUserProjects } from "../utils/FetchProjects.jsx";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase.js";
 
@@ -11,27 +11,25 @@ export default function ProjectProvider({ children }) {
   const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      console.log("Auth state changed, user:", user);
+    let unsubscribeProjects = null;
+
+    const unsubscribeAuth = onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
-      
+
       if (user && user.email) {
-        console.log("Loading projects for user:", user.email);
-        const loadProjects = async () => {
-          const data = await fetchUserProjects(user.email);
-          console.log("Projects loaded:", data);
-          setProjects(data);
-          setLoading(false);
-        };
-        loadProjects();
+        unsubscribeProjects = listenUserProjects(user.email, setProjects);
+        setLoading(false);
       } else {
-        console.log("No user signed in");
+        if (unsubscribeProjects) unsubscribeProjects();
         setProjects([]);
         setLoading(false);
       }
     });
 
-    return () => unsubscribe();
+    return () => {
+      unsubscribeAuth();
+      if (unsubscribeProjects) unsubscribeProjects();
+    };
   }, []);
 
   return (

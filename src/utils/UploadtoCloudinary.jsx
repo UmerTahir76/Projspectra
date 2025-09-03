@@ -14,5 +14,5 @@ export const uploadToCloudinary = async (file, folder = "projects") => {
   );
 
   const data = await res.json();
-  return data.secure_url; // return uploaded file URL
+  return { url: data.secure_url, publicId: data.public_id }; // return uploaded file URL + id
 };

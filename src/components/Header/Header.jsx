@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { auth } from "../../firebase.js";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import "./Header.css";
-import Authen from "../../pages/Landing/Authen.jsx";
+import Authen from "../../pages/Auth/Authen.jsx";
 import UploadProjectForm from "../UploadPeoject/UploadProjectForm.jsx";
 
 // 🔹 new imports
@@ -60,21 +60,21 @@ export default function Header() {
       }
 
       const projectId = uuidv4();
-      let coverUrl = "";
-      let videoUrl = "";
-      let supportingUrls = [];
+      let coverData = null;
+      let videoData = null;
+      let supportingData = [];
 
       if (coverImage) {
-        coverUrl = await uploadToCloudinary(coverImage, "coverImages");
+        coverData = await uploadToCloudinary(coverImage, "coverImages");
       }
 
       for (const img of supportingImages) {
-        const url = await uploadToCloudinary(img, "supportingImages");
-        supportingUrls.push(url);
+        const imgData = await uploadToCloudinary(img, "supportingImages");
+        supportingData.push(imgData);
       }
 
       if (video) {
-        videoUrl = await uploadToCloudinary(video, "projectVideos");
+        videoData = await uploadToCloudinary(video, "projectVideos");
       }
 
       await setDoc(doc(db, "projects", projectId), {
@@ -84,9 +84,9 @@ export default function Header() {
         projectCategory,
         languages,
         description,
-        coverImage: coverUrl,
-        supportingImages: supportingUrls,
-        video: videoUrl,
+        coverImage: coverData,
+        supportingImages: supportingData,
+        video: videoData,
         githubLink,
         liveLink,
         createdAt: new Date(),

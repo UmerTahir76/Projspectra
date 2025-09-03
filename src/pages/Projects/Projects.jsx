@@ -2,9 +2,10 @@ import React, { useContext, useState } from "react";
 import ProjectCard from "../../components/ProjectCard/ProjectCard.jsx";
 import { ProjectContext } from "../../context/ProjectProvider.jsx";
 import "./Project.css";
+import { deleteProject } from "../../utils/DeleteProject.jsx"; // <- tumhari utility
 
 export default function Projects() {
-  const { projects, loading, currentUser } = useContext(ProjectContext);
+  const { projects, setProjects, loading, currentUser, editProject } = useContext(ProjectContext);
   const [searchQuery, setSearchQuery] = useState("");
   const [activeTab, setActiveTab] = useState("All");
 
@@ -16,6 +17,23 @@ export default function Projects() {
       (activeTab === "All" || project.projectCategory === activeTab) &&
       project.projectTitle?.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  // Handle Delete using utility
+  const handleDelete = async (projectId) => {
+    try {
+      await deleteProject(projectId, setProjects);
+    } catch (err) {
+      console.error("Failed to delete project:", err);
+      alert("Failed to delete project. Check console.");
+    }
+  };
+
+
+  // Handle Edit
+  const handleEdit = (project) => {
+    console.log("Edit project:", project);
+    // navigate to edit page or open modal
+  };
 
   if (loading) {
     return (
@@ -36,13 +54,11 @@ export default function Projects() {
         </div>
       ) : (
         <>
-          {/* Welcome message with user email */}
           <div className="user-welcome">
             <p>Welcome, <strong>{currentUser.email}</strong></p>
             <p>You have {projects.length} projects</p>
           </div>
 
-          {/* Search Bar */}
           <div className="search-section">
             <input
               type="text"
@@ -52,7 +68,6 @@ export default function Projects() {
             />
           </div>
 
-          {/* Tabs */}
           <div className="tabs">
             {tabs.map((tab) => (
               <button
@@ -65,11 +80,16 @@ export default function Projects() {
             ))}
           </div>
 
-          {/* Project List */}
           <div className="project-list">
             {filteredProjects.length > 0 ? (
               filteredProjects.map((project) => (
-                <ProjectCard key={project.projectId} project={project} />
+                <ProjectCard
+                  key={project.projectId}
+                  project={project}
+                  showActions={true}
+                  onDelete={() => handleDelete(project.projectId)}
+                  onEdit={() => handleEdit(project)}
+                />
               ))
             ) : projects.length > 0 ? (
               <p>No projects found matching your search.</p>

@@ -55,7 +55,7 @@ export default function ProjectDetail() {
 
       {/* Cover Image */}
       <div className="cover-image-container">
-        <img src={project.coverImage} alt={project.projectTitle} className="cover-image"/>
+        <img src={project.coverImage.url} alt={project.projectTitle} className="cover-image"/>
       </div>
 
       {/* Description */}
@@ -71,7 +71,7 @@ export default function ProjectDetail() {
           <div className="supporting-images-grid">
             {project.supportingImages.map((img, idx) => (
               <div className="supporting-card" key={idx}>
-                <img src={img} alt={`Supporting ${idx + 1}`} />
+                <img src={img.url} alt={`Supporting ${idx + 1}`} />
               </div>
             ))}
           </div>
@@ -83,7 +83,7 @@ export default function ProjectDetail() {
         <section className="project-section">
           <h2>Project Video</h2>
           <video controls className="project-video">
-            <source src={project.video} type="video/mp4"/>
+            <source src={project.video.url} type="video/mp4"/>
             Your browser does not support the video tag.
           </video>
         </section>
