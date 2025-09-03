@@ -3,11 +3,16 @@ import ProjectCard from "../../components/ProjectCard/ProjectCard.jsx";
 import { ProjectContext } from "../../context/ProjectProvider.jsx";
 import "./Project.css";
 import { deleteProject } from "../../utils/DeleteProject.jsx"; // <- tumhari utility
+import UploadProjectForm from "../../components/UploadPeoject/UploadProjectForm.jsx";
+import { uploadToCloudinary } from "../../utils/UploadtoCloudinary.jsx";
 
 export default function Projects() {
-  const { projects, setProjects, loading, currentUser, editProject } = useContext(ProjectContext);
+  const { projects, loading, currentUser, editProject, setProjects } = useContext(ProjectContext);
   const [searchQuery, setSearchQuery] = useState("");
   const [activeTab, setActiveTab] = useState("All");
+  const [editingProject, setEditingProject] = useState(null);
+  const [showForm, setShowForm] = useState(false);
+  const [updateLoading, setUpdateLoading] = useState(false);
 
   const tabs = ["All", "web", "app", "ai", "ecomm"];
 
@@ -28,11 +33,96 @@ export default function Projects() {
     }
   };
 
+  // Handle Update
+  const handleUpdate = async (updateData) => {
+    setUpdateLoading(true);
+    try {
+      // Upload new cover image
+      let newCoverImage = null;
+      if (updateData.coverImage) {
+        const uploaded = await uploadToCloudinary(updateData.coverImage);
+        newCoverImage = { url: uploaded.url, publicId: uploaded.publicId };
+      }
+
+      // Upload new supporting images
+      let newSupportingImages = [];
+      if (updateData.supportingImages && updateData.supportingImages.length > 0) {
+        for (const file of updateData.supportingImages) {
+          const uploaded = await uploadToCloudinary(file);
+          newSupportingImages.push({ url: uploaded.url, publicId: uploaded.publicId });
+        }
+      }
+
+      // Upload new video
+      let newVideo = null;
+      if (updateData.video) {
+        const uploaded = await uploadToCloudinary(updateData.video);
+        newVideo = { url: uploaded.url, publicId: uploaded.publicId };
+      }
+
+      // Prepare data for backend
+      const backendData = {
+        projectId: updateData.projectId,
+        projectTitle: updateData.projectTitle,
+        projectCategory: updateData.projectCategory,
+        languages: updateData.languages,
+        description: updateData.description,
+        githubLink: updateData.githubLink,
+        liveLink: updateData.liveLink,
+        toDeleteCover: updateData.toDeleteCover,
+        toDeleteSupporting: updateData.toDeleteSupporting,
+        toDeleteVideo: updateData.toDeleteVideo,
+        newCoverImage,
+        newSupportingImages,
+        newVideo,
+      };
+
+      // Call backend
+      const res = await fetch("http://localhost:5000/updateProject", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(backendData),
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        alert("Project updated successfully!");
+        // Update the project in state
+        editProject(updateData.projectId, (prev) => ({
+          ...prev,
+          projectTitle: updateData.projectTitle,
+          projectCategory: updateData.projectCategory,
+          languages: updateData.languages,
+          description: updateData.description,
+          githubLink: updateData.githubLink,
+          liveLink: updateData.liveLink,
+          coverImage: newCoverImage || (updateData.toDeleteCover ? null : prev.coverImage),
+          supportingImages: [
+            ...(prev.supportingImages || []).filter(img => !updateData.toDeleteSupporting.includes(img.publicId)),
+            ...newSupportingImages
+          ],
+          video: newVideo || (updateData.toDeleteVideo ? null : prev.video),
+        }));
+        setShowForm(false);
+        setEditingProject(null);
+      } else {
+        alert("Failed to update project");
+      }
+    } catch (err) {
+      console.error("Error updating project:", err);
+      alert("Error updating project");
+    } finally {
+      setUpdateLoading(false);
+    }
+  };
 
   // Handle Edit
   const handleEdit = (project) => {
-    console.log("Edit project:", project);
-    // navigate to edit page or open modal
+    setEditingProject(project);
+    setShowForm(true);
   };
 
   if (loading) {
@@ -97,6 +187,21 @@ export default function Projects() {
               <p>No projects found. Create your first project!</p>
             )}
           </div>
+
+          {showForm && (
+          <>
+            <div className="upload-form-backdrop" onClick={() => setShowForm(false)}></div>
+            <div className="upload-form-modal">
+              <button className="modal-close-btn" onClick={() => setShowForm(false)}>✕</button>
+              <UploadProjectForm
+                isEditing={true}
+                project={editingProject}
+                onUpdate={handleUpdate}
+                loading={updateLoading}
+              />
+            </div>
+          </>
+          )}
         </>
       )}
     </div>

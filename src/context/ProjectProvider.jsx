@@ -32,8 +32,17 @@ export default function ProjectProvider({ children }) {
     };
   }, []);
 
+  // Add editProject function to update a project in state
+  const editProject = (projectId, updatedData) => {
+    setProjects((prevProjects) =>
+      prevProjects.map((project) =>
+        project.projectId === projectId ? { ...project, ...updatedData } : project
+      )
+    );
+  };
+
   return (
-    <ProjectContext.Provider value={{ projects, loading, currentUser }}>
+    <ProjectContext.Provider value={{ projects, loading, currentUser, editProject }}>
       {children}
     </ProjectContext.Provider>
   );
