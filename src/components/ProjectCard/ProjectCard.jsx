@@ -48,11 +48,11 @@ export default function ProjectCard({ project, showActions = false, onDelete, on
         ))}
       </div>
 
-      {/* Stats */}
+      {/* Stats
       <div className="stats">
         <span>👁️ {project.views || 0}</span>
         <span>❤️ {project.likes || 0}</span>
-      </div>
+      </div> */}
 
       {/* Actions (only if allowed) */}
       {showActions && (
