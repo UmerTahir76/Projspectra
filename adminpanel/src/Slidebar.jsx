@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Sidebar() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -15,13 +16,16 @@ export default function Sidebar() {
       >
         <h1 className="beast-sidebar__title">Admin Panel</h1>
         <ul className="beast-sidebar__nav">
-          {['Dashboard', 'Projects', 'Users', 'Reports', 'Settings'].map((item) => (
-            <li key={item} className="beast-sidebar__nav-item">
-              <a href="#" className="beast-sidebar__nav-link">
-                {item}
-              </a>
-            </li>
-          ))}
+          {['Dashboard', 'Projects', 'Users', 'Reports', 'Settings'].map((item) => {
+            const to = item === 'Dashboard' ? '/dashboard' : item === 'Projects' ? '/projects' : item === 'Users' ? '/users' : '#';
+            return (
+              <li key={item} className="beast-sidebar__nav-item">
+                <Link to={to} className="beast-sidebar__nav-link">
+                  {item}
+                </Link>
+              </li>
+            );
+          })}
         </ul>
       </aside>
 

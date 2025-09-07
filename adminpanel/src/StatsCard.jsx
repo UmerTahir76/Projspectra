@@ -27,8 +27,6 @@ export default function StatsCards() {
           grid-template-columns: repeat(auto-fit, minmax(220px, 3fr));
           gap: 2rem;
           padding: 2rem 1rem;
-          max-width: 1200px;
-          margin: 0 auto;
         }
 
         .beast-stats__card {

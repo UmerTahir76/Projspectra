@@ -2,7 +2,7 @@ export default function Navbar() {
   return (
     <>
       <nav className="beast-navbar">
-        <h2 className="beast-navbar__title">Dashboard</h2>
+        <h2 className="beast-navbar__title">BitSpectra</h2>
         <div className="beast-navbar__profile">
           <span className="beast-navbar__admin-label">Admin Panel</span>
           <img
@@ -16,20 +16,23 @@ export default function Navbar() {
 
       <style jsx>{`
         /* Navbar container */
-        .beast-navbar {
-          background: linear-gradient(135deg, #0e7490, #22d3ee);
-          box-shadow: 0 8px 24px rgba(14, 116, 144, 0.6);
-          padding: 1rem 8rem;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          user-select: none;
-          position: relative;
-          overflow: hidden;
-           width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-        }
+.beast-navbar {
+  background: linear-gradient(135deg, #0e7490, #22d3ee);
+  box-shadow: 0 8px 24px rgba(14, 116, 144, 0.6);
+  padding: 1rem 2rem; /* 8rem ki jagah chhota padding */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none;
+  position: fixed;
+  top: 0;
+  overflow-x: hidden;
+  width: 100%;   /* <-- full width */
+  left: 0;       /* ensure no shift */
+  right: 0;
+  box-sizing: border-box;
+}
+
 
         /* Title with fade-in-down animation */
         .beast-navbar__title {
