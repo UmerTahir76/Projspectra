@@ -9,7 +9,7 @@ const Contact = () => {
       image: "/kam.jpeg",
       linkedin: "https://www.linkedin.com/in/mkamranakbar/",
       Email: "mkamranakbar@outlook.com",
-      phone:" +92-321-8600834"
+      phone:" +92-321-xxxxxxx"
     
     },
     {
