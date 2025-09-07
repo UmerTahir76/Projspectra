@@ -18,11 +18,13 @@ export default function Header() {
   const [user, setUser] = useState(null);
   const [isRegistered, setIsRegistered] = useState(false);
   const [loading, setLoading] = useState(false); // 🔹 added
+  const [authLoading, setAuthLoading] = useState(true); // 🔹 added for auth state loading
 
   // Listen to firebase auth state
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
+      setAuthLoading(false); // 🔹 set loading to false after auth state is determined
     });
     return () => unsubscribe();
   }, []);
@@ -89,6 +91,7 @@ export default function Header() {
         video: videoData,
         githubLink,
         liveLink,
+        status: "pending",
         createdAt: new Date(),
       });
 
@@ -118,7 +121,10 @@ export default function Header() {
           </nav>
 
           <div className="flex gap-x-6">
-            {(!user || isRegistered) ? (
+            {authLoading ? (
+              // Show nothing while loading auth state
+              <div></div>
+            ) : (!user || isRegistered) ? (
               <>
                 <button className="btn-primary" onClick={() => setShowAuth(true)}>Login</button>
                 <button className="btn-primary" onClick={() => setShowAuth(true)}>Get Started</button>
@@ -135,8 +141,9 @@ export default function Header() {
         <div className={`drawer ${drawerOpen ? "open" : ""}`}>
           <span className="drawer-close" onClick={() => setDrawerOpen(false)}>✕</span>
           <ul>
-            <li><a href="/profile">👤 Your Profile</a></li>
-            <li><a href="/projects">📂 Your Projects</a></li>
+            <li><a href="/profile" onClick={() => setDrawerOpen(false)}>👤 Your Profile</a></li>
+            <li><a href="/projects" onClick={() => setDrawerOpen(false)}>📂 Your Projects</a></li>
+            <li><a href="/chat" onClick={() => setDrawerOpen(false)}>💬 Chat</a></li>
             <li>
               <a
                 href="#"

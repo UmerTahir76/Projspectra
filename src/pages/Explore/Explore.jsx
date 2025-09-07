@@ -7,11 +7,14 @@ const fetchAllProjects = async () => {
   try {
     const { collection, getDocs, query, orderBy } = await import("firebase/firestore");
     const { db } = await import("../../firebase");
-    
+
     const q = query(collection(db, "projects"), orderBy("createdAt", "desc"));
     const snapshot = await getDocs(q);
-    const projects = snapshot.docs.map(doc => doc.data());
-    return projects;
+    const allProjects = snapshot.docs.map(doc => doc.data());
+
+    // Filter to show only verified projects
+    const verifiedProjects = allProjects.filter(project => project.status === "verified");
+    return verifiedProjects;
   } catch (err) {
     console.error("Error fetching all projects:", err);
     return [];

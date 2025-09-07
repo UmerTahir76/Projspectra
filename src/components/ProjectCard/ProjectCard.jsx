@@ -10,9 +10,23 @@ export default function ProjectCard({ project, showActions = false, onDelete, on
   };
 
   return (
-    <div className="project-card" onClick={handleClick}>
+    <div className="project-card" onClick={handleClick} style={{ position: "relative" }}>
+      {/* Time icon for pending status */}
+      {project.status === "pending" && (
+        <div className="pending-icon" title="Pending Approval">⏳</div>
+      )}
+
+      {/* Reject label for rejected status */}
+      {project.status === "reject" && (
+        <div className="reject-label">REJECT</div>
+      )}
+
       {/* Cover Image from Cloudinary */}
-      <img src={project.coverImage.url} alt={project.projectTitle} />
+      {project.coverImage ? (
+        <img src={project.coverImage.url} alt={project.projectTitle} />
+      ) : (
+        <div className="no-image-placeholder">No Image Available</div>
+      )}
 
       {/* Project Title */}
       <h3>{project.projectTitle}</h3>

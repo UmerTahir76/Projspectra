@@ -151,12 +151,12 @@ export default function UploadProjectForm({ handleUpload, loading, isEditing = f
 
         {/* Cover Image */}
         <div className="form-group">
-          <label>Cover Image</label>
+          <label>Cover Image *</label>
           <input
             type="file"
             accept="image/*"
             onChange={(e) => setCoverImage(e.target.files[0])}
-            required={!isEditing || !existingCoverImage}
+            required
           />
           <div className="preview-list">
             {existingCoverImage && !toDeleteCover && (

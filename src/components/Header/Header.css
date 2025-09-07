@@ -71,6 +71,7 @@
   list-style: none;
   display: flex;
   gap: 1.5rem;
+  margin-top: 10px;
 }
 
 .nav-links li a {
@@ -241,7 +242,7 @@
 /* Drawer styles */
 .menu-btn {
   position: absolute;
-  top: 30px;
+  top: 23px;
   right: 20px;
   font-size: 1.5rem;
   background: transparent;
