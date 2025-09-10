@@ -3,7 +3,7 @@ export const deleteProject = async (projectId, setProjects) => {
   if (!window.confirm("Are you sure you want to delete this project?")) return;
 
   try {
-    const res = await fetch("http://localhost:5000/deleteProject", {
+    const res = await fetch("https://projspectra-server.vercel.app/api/deleteProject", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

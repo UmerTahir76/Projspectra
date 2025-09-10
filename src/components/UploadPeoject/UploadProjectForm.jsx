@@ -56,6 +56,8 @@ export default function UploadProjectForm({ handleUpload, loading, isEditing = f
     }
   }, [isEditing, project]);
 
+  const hasCover = (existingCoverImage && !toDeleteCover) || coverImage;
+
   const handleSupportingImagesChange = (e) => {
     const files = Array.from(e.target.files);
     setSupportingImages((prev) => [...prev, ...files]);
@@ -156,10 +158,20 @@ export default function UploadProjectForm({ handleUpload, loading, isEditing = f
             type="file"
             accept="image/*"
             onChange={(e) => setCoverImage(e.target.files[0])}
-            required
+            required={!hasCover}
+            disabled={hasCover}
           />
           <div className="preview-list">
-            {existingCoverImage && !toDeleteCover && (
+            {coverImage ? (
+              <div className="preview-item">
+                <img
+                  src={URL.createObjectURL(coverImage)}
+                  alt="cover"
+                  className="preview-img"
+                />
+                <button type="button" onClick={() => setCoverImage(null)}>✕</button>
+              </div>
+            ) : existingCoverImage && !toDeleteCover ? (
               <div className="preview-item">
                 <img
                   src={existingCoverImage.url}
@@ -168,17 +180,7 @@ export default function UploadProjectForm({ handleUpload, loading, isEditing = f
                 />
                 <button type="button" onClick={() => setToDeleteCover(true)}>✕</button>
               </div>
-            )}
-            {coverImage && (
-              <div className="preview-item">
-                <img
-                  src={URL.createObjectURL(coverImage)}
-                  alt="new cover"
-                  className="preview-img"
-                />
-                <button type="button" onClick={() => setCoverImage(null)}>✕</button>
-              </div>
-            )}
+            ) : null}
           </div>
         </div>
 
