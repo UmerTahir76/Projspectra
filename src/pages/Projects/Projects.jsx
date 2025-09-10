@@ -78,7 +78,7 @@ export default function Projects() {
       };
 
       // Call backend
-      const res = await fetch("https://projspectra-server.vercel.app/api/updateProject.js" , {
+      const res = await fetch("https://projspectra-server.vercel.app/api/updateProject" , {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
