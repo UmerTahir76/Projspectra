@@ -20,12 +20,12 @@ It allows users to upload projects, while admins can approve or reject them.
 
 ## 🌟 Features
 
-- **User authentication** (Firebase)
-✅ Project upload functionality
-✅ Admin panel for project approval/rejection
-✅ Responsive UI with Tailwind
-✅ Dashboard for project management
-✅ Clean folder structure
+- User authentication (Firebase)
+- Project upload functionality
+- Admin panel for project approval/rejection
+- Responsive UI with Tailwind
+- Dashboard for project management
+- Clean folder structure
 
 ## ⚙️ Installation & Setup  
 
