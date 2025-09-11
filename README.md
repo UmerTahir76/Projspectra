@@ -10,21 +10,11 @@ It allows users to upload projects, while admins can approve or reject them.
 
 ## 🛠️ Tech Stack  
 - **React (Vite)** – UI framework  
-- **Tailwind CSS** – Styling  
+- **CSS** – Styling  
 - **React Router** – Navigation  
-- **Axios** – API calls  
-- **Firebase** – Authentication (with environment variable support)  
-
----
-
-## ⚙️ Installation & Setup  
-
-### Clone the repository  
-```bash
-git clone -b umer-dev https://github.com/UmerTahir76/Projspectra.git
-cd Projspectra
-npm install
-npm run dev
+- **Fetch** – API calls  
+- **Firebase** – Authentication (with environment variable support)
+- **Cloudinary** – Store visuals
 
 ---
 
@@ -36,4 +26,14 @@ npm run dev
 ✅ Responsive UI with Tailwind
 ✅ Dashboard for project management
 ✅ Clean folder structure
+
+## ⚙️ Installation & Setup  
+
+### Clone the repository  
+```bash
+git clone -b umer-dev https://github.com/UmerTahir76/Projspectra.git
+cd Projspectra
+npm install
+npm run dev
+
   
