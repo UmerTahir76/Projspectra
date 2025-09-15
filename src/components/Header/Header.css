@@ -52,6 +52,7 @@
   font-weight: 700;
   background: linear-gradient(90deg, var(--accent-blue), var(--accent-dark-blue));
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: white;
   animation: logoPulseSmooth 4s ease-in-out infinite;
   letter-spacing: 2px;
