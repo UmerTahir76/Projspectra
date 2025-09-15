@@ -1,29 +1,29 @@
 .chat-container {
-  max-width: 800px;
-  margin: 20px auto;
-  padding: 20px;
+  max-width: 50rem;
+  margin: 1.25rem auto;
+  padding: 1.25rem;
   background-color: #f9f9f9;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 0.625rem;
+  box-shadow: 0 0 0.625rem rgba(0, 0, 0, 0.1);
 }
 
 .chat-list h2 {
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
   color: #333;
 }
 
 .chat-card {
   background-color: #fff;
-  border-radius: 10px;
-  padding: 15px;
-  margin-bottom: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 0.625rem;
+  padding: 0.9375rem;
+  margin-bottom: 0.625rem;
+  box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.1);
   cursor: pointer;
   transition: transform 0.2s;
 }
 
 .chat-card:hover {
-  transform: translateY(-2px);
+  transform: translateY(-0.125rem);
 }
 
 .chat-card-header h3 {
@@ -32,25 +32,25 @@
 }
 
 .chat-card-message p {
-  margin: 5px 0 0 0;
+  margin: 0.3125rem 0 0 0;
   color: #666;
 }
 
 .chat-view {
   background-color: #fff;
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 0.625rem;
+  padding: 1.25rem;
+  box-shadow: 0 0 0.625rem rgba(0, 0, 0, 0.1);
 }
 
 .back-btn {
   background-color: #007bff;
   color: white;
   border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
+  padding: 0.625rem 0.9375rem;
+  border-radius: 0.3125rem;
   cursor: pointer;
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
 }
 
 .back-btn:hover {
@@ -58,14 +58,14 @@
 }
 
 .messages {
-  max-height: 400px;
+  max-height: 25rem;
   overflow-y: auto;
 }
 
 .message {
-  margin-bottom: 15px;
-  padding: 10px;
-  border-radius: 10px;
+  margin-bottom: 0.9375rem;
+  padding: 0.625rem;
+  border-radius: 0.625rem;
   max-width: 70%;
 }
 
@@ -83,6 +83,51 @@
 .timestamp {
   font-size: 0.8em;
   color: #999;
-  margin-top: 5px;
+  margin-top: 0.3125rem;
   display: block;
+}
+
+/* Mobile styles */
+@media (max-width: 640px) {
+  .chat-container {
+    margin: 1rem auto;
+    padding: 1rem;
+    max-width: 95%;
+  }
+
+  .chat-card {
+    padding: 0.75rem;
+  }
+
+  .chat-view {
+    padding: 1rem;
+  }
+
+  .messages {
+    max-height: 20rem;
+  }
+
+  .message {
+    max-width: 85%;
+  }
+}
+
+/* Tablet styles */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .chat-container {
+    max-width: 45rem;
+    padding: 1.5rem;
+  }
+
+  .messages {
+    max-height: 30rem;
+  }
+}
+
+/* Desktop styles */
+@media (min-width: 1025px) {
+  .chat-container {
+    max-width: 50rem;
+    padding: 1.25rem;
+  }
 }

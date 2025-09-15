@@ -13,11 +13,11 @@
 .authen-card {
   position: relative;
   background: #ffffff;
-  border-radius: 20px;
+  border-radius: 1.25rem;
   padding: 3rem 4rem;
-  max-width: 500px;
+  max-width: 31.25rem;
   width: 90%;
-  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0.625rem 2.1875rem rgba(0, 0, 0, 0.25);
   animation: fadeInUp 0.5s ease forwards;
   transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
@@ -29,12 +29,12 @@
 
 /* Card Title */
 .authen-title {
-  
   text-align: center;
   font-size: 1.5rem;
   font-weight: 400;
   margin-bottom: -0.5rem;
   background: linear-gradient(90deg, #3b82f6, #10b981);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: titleFade 1s ease-in-out;
@@ -174,17 +174,6 @@
 .create-account a:hover {
   color: #10b981;
   text-decoration: underline;
-}
-/* Container card */
-.authen-card {
-  position: relative;
-  background: #fff;
-  border-radius: 20px;
-  padding: 3rem 4rem;
-  max-width: 500px;
-  width: 90%;
-  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.25);
-  animation: fadeInUp 0.5s ease forwards;
 }
 
 
@@ -373,33 +362,55 @@
   margin: 0 auto;     /* horizontal centering if width < 100% */
 }
 
-/*???????*/
+/* Mobile styles */
+@media (max-width: 640px) {
+  .authen-card {
+    padding: 2rem 2rem;
+    max-width: 90%;
+    border-radius: 0.75rem;
+  }
 
+  .authen-title {
+    font-size: 1.25rem;
+  }
 
-.authen-card {
-  position: relative;
-  background: #fff;
-  border-radius: 10px;
-  padding: 2rem 4rem;
-  max-width: 500px;
-  width: 100%;
-  box-shadow: 0 10px 35px rgba(0,0,0,0.25);
-  animation: cardFadeIn 0.5s ease forwards;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  .authen-form input {
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+  }
+
+  .submit-btn {
+    padding: 0.75rem;
+    font-size: 1rem;
+  }
+
+  .close-btn {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.5rem;
+  }
 }
 
-@keyframes cardFadeIn {
-  0% { 
-    opacity: 0; 
-    transform: scale(0.9) translateY(20px); 
-    border: 2px solid rgba(59,130,246,0.0);
+/* Tablet styles */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .authen-card {
+    padding: 2.5rem 3rem;
+    max-width: 28rem;
   }
-  50% {
-    border: 2px solid rgba(59,130,246,0.3);
+
+  .authen-title {
+    font-size: 1.75rem;
   }
-  100% { 
-    opacity: 1; 
-    transform: scale(1) translateY(0); 
-    border: 2px solid rgba(59,130,246,0.0);
+}
+
+/* Desktop styles */
+@media (min-width: 1025px) {
+  .authen-card {
+    padding: 3rem 4rem;
+    max-width: 31.25rem;
+  }
+
+  .authen-title {
+    font-size: 2rem;
   }
 }

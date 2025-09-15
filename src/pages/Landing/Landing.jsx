@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Landing.css";
 
 export default function Landing() {
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('mode') === 'resetPassword') {
+      alert("Password reset successful.");
+      window.history.replaceState({}, document.title, window.location.pathname);
+    }
+  }, []);
 
   const Hero = () => (
     <section className="hero">

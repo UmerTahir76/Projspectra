@@ -5,6 +5,8 @@ import {
   signInWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
+  sendEmailVerification,
+  sendPasswordResetEmail,
 } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import "./Authen.css";
@@ -47,6 +49,11 @@ export default function Authen({ closeModal , onRegisterSuccess, onLoginSuccess}
       );
       const user = userCredential.user;
 
+      // Send email verification
+      await sendEmailVerification(user);
+
+      alert("Registration successful. We have sent you an email verification.");
+
       await saveUserToFirestore(user, { firstName, lastName, password });
 
       // ✅ parent ko notify karna ke ye REGISTER hai
@@ -63,8 +70,13 @@ export default function Authen({ closeModal , onRegisterSuccess, onLoginSuccess}
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-    const userCredential = await signInWithEmailAndPassword(auth, email, password);
-    const user = userCredential.user
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+
+      if (!user.emailVerified) {
+        alert("Please verify your email first.");
+        return;
+      }
 
       if (onLoginSuccess) {
         onLoginSuccess(user);
@@ -81,7 +93,29 @@ export default function Authen({ closeModal , onRegisterSuccess, onLoginSuccess}
       const provider = new GoogleAuthProvider();
       const result = await signInWithPopup(auth, provider);
       await saveUserToFirestore(result.user);
+
+      // ✅ parent ko notify karna ke ye LOGIN hai
+      if (onLoginSuccess) {
+        onLoginSuccess(result.user);
+      }
       closeModal(); // modal auto-close
+    } catch (err) {
+      alert(err.message);
+    }
+  };
+
+  // Forgot password
+  const handleForgotPassword = async () => {
+    if (!email) {
+      alert("Please enter your email first.");
+      return;
+    }
+    try {
+      const actionCodeSettings = {
+        url: window.location.origin + '/', // redirect to home after reset
+      };
+      await sendPasswordResetEmail(auth, email, actionCodeSettings);
+      alert("Check your inbox. If you don’t see the email, please check your Spam or Promotions folder.");
     } catch (err) {
       alert(err.message);
     }
@@ -195,7 +229,7 @@ export default function Authen({ closeModal , onRegisterSuccess, onLoginSuccess}
                 </span>
               </div>
 
-              <p className="forgot-pass">Forgot Password?</p>
+              <p className="forgot-pass"><span onClick={handleForgotPassword} style={{cursor: 'pointer'}}>Forgot Password?</span></p>
 
               <button className="submit-btn" type="submit">
                 Login

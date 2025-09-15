@@ -1,3 +1,20 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px; /* Base font size for rem calculations */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+}
+
 .app-container {
   min-height: 100vh;
   display: flex;
@@ -6,4 +23,24 @@
 
 .main-content {
   flex-grow: 1;
+}
+
+/* Mobile-first responsive utilities */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 641px) {
+  .container {
+    padding: 0 2rem;
+  }
+}
+
+@media (min-width: 1025px) {
+  .container {
+    padding: 0 3rem;
+  }
 }

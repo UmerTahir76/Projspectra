@@ -1,7 +1,7 @@
 .profile-page {
   text-align: center;
-  padding: 40px 20px;
-  max-width: 2000px;
+  padding: 2.5rem 1.25rem;
+  max-width: 100vw;
   margin: 0 auto;
   background: url("https://images.ctfassets.net/nnkxuzam4k38/4lBzkVBmJ0qvFJ90SJHEdV/7645fc49f7f1fb4a8c31a94fc4c97f4d/black-particles-background.png") center/cover no-repeat;
   min-height: 100vh;
@@ -9,16 +9,16 @@
 }
 
 .profile-page h1 {
-  margin-bottom: 50px;
+  margin-bottom: 3.125rem;
   color: white;
   font-size: 3.5rem;
   font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 2px;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  letter-spacing: 0.125rem;
+  text-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
   position: relative;
   display: inline-block;
-  padding-bottom: 15px;
+  padding-bottom: 0.9375rem;
 }
 
 .profile-page h1::after {
@@ -27,22 +27,22 @@
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 80px;
-  height: 4px;
+  width: 5rem;
+  height: 0.25rem;
   background: #2c3e50;
-  border-radius: 2px;
+  border-radius: 0.125rem;
 }
 
 .profile-page h1::before {
   content: '';
   position: absolute;
-  bottom: -8px;
+  bottom: -0.5rem;
   left: 50%;
   transform: translateX(-50%);
-  width: 40px;
-  height: 4px;
+  width: 2.5rem;
+  height: 0.25rem;
   background: #2c3e50;
-  border-radius: 2px;
+  border-radius: 0.125rem;
   opacity: 0.7;
 }
 
@@ -50,17 +50,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
-  margin-bottom: 40px;
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
 }
 
 .profile-menu button {
-  padding: 12px 24px;
-  border: 2px solid #ddd;
-  border-radius: 25px;
+  padding: 0.75rem 1.5rem;
+  border: 0.125rem solid #ddd;
+  border-radius: 1.5625rem;
   background-color: transparent;
   color: white;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s;
@@ -79,11 +79,11 @@
 }
 
 .profile-content {
-  max-width: 800px;
+  max-width: 50rem;
   margin: 0 auto;
   background: rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
-  padding: 30px;
+  border-radius: 1.25rem;
+  padding: 1.875rem;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
@@ -91,8 +91,8 @@
 .personal-info p,
 .user-projects li,
 .settings p {
-  font-size: 18px;
-  margin-bottom: 15px;
+  font-size: 1.125rem;
+  margin-bottom: 0.9375rem;
   color: white;
 }
 
@@ -103,27 +103,71 @@
 
 .user-projects li {
   background: rgba(255, 255, 255, 0.1);
-  padding: 15px;
-  margin-bottom: 10px;
-  border-radius: 10px;
+  padding: 0.9375rem;
+  margin-bottom: 0.625rem;
+  border-radius: 0.625rem;
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-@media (max-width: 768px) {
+/* Tablet styles */
+@media (min-width: 641px) {
   .profile-page {
-    padding: 15px;
+    padding: 2.5rem 2rem;
+  }
+
+  .profile-page h1 {
+    font-size: 4rem;
   }
 
   .profile-menu {
-    gap: 10px;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1.5rem;
   }
 
   .profile-menu button {
-    padding: 10px 20px;
-    font-size: 14px;
+    padding: 0.875rem 1.75rem;
+    font-size: 1.125rem;
   }
 
   .profile-content {
-    padding: 20px;
+    padding: 2.5rem;
+  }
+
+  .personal-info p,
+  .user-projects li,
+  .settings p {
+    font-size: 1.25rem;
+  }
+}
+
+/* Desktop styles */
+@media (min-width: 1025px) {
+  .profile-page {
+    padding: 2.5rem 3rem;
+  }
+
+  .profile-page h1 {
+    font-size: 4.5rem;
+  }
+
+  .profile-menu {
+    gap: 2rem;
+  }
+
+  .profile-menu button {
+    padding: 1rem 2rem;
+    font-size: 1.25rem;
+  }
+
+  .profile-content {
+    max-width: 60rem;
+    padding: 3rem;
+  }
+
+  .personal-info p,
+  .user-projects li,
+  .settings p {
+    font-size: 1.375rem;
   }
 }

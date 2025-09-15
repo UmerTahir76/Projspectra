@@ -1,13 +1,13 @@
 /* Main container for form */
 .upload-form-container {
   position: relative; /* for close button absolute positioning */
-  padding: 20px;
+  padding: 1.25rem;
   background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  border-radius: 0.75rem;
+  box-shadow: 0 0.5rem 1.25rem rgba(0,0,0,0.15);
   width: 90%;
-  max-width: 600px;
-  margin: 20px auto;
+  max-width: 37.5rem;
+  margin: 1.25rem auto;
   font-family: 'Inter', sans-serif;
   animation: slideIn 0.3s ease-out;
 }
@@ -18,14 +18,14 @@
   font-size: 1.8rem;
   font-weight: 600;
   color: #333;
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
 }
 
 /* Form groups */
 .authen-form .form-group {
   display: flex;
   flex-direction: column;
-  margin-bottom: 15px;
+  margin-bottom: 0.9375rem;
 }
 
 /* Input, select, textarea */
@@ -33,9 +33,9 @@
 .authen-form select,
 .authen-form textarea {
   width: 100%;              /* sab ki same width */
-  padding: 12px 15px;
+  padding: 0.75rem 0.9375rem;
   border: 1px solid #ddd;
-  border-radius: 8px;
+  border-radius: 0.5rem;
   font-size: 1rem;
   outline: none;
   transition: border-color 0.3s, box-shadow 0.3s;
@@ -52,30 +52,30 @@
 
 /* Textarea styling */
 .authen-form textarea {
-  min-height: 100px;
+  min-height: 6.25rem;
   resize: vertical;
 }
 
 /* Labels */
 .authen-form label {
   font-weight: 500;
-  margin-bottom: 5px;
+  margin-bottom: 0.3125rem;
   color: #555;
 }
 
 /* File input */
 .authen-form input[type="file"] {
-  padding: 5px 10px;
+  padding: 0.3125rem 0.625rem;
 }
 
 /* Submit button */
 .submit-btn {
   width: 100%;
-  padding: 12px;
+  padding: 0.75rem;
   background-color: #6C63FF;
   color: #fff;
   border: none;
-  border-radius: 10px;
+  border-radius: 0.625rem;
   font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
@@ -90,12 +90,12 @@
 /* Modal close button */
 .modal-close-btn {
   position: absolute;
-  top: 12px;
-  right: 12px;
+  top: 0.75rem;
+  right: 0.75rem;
   background: #f5f5f5;
   border: none;
-  width: 32px;
-  height: 32px;
+  width: 2rem;
+  height: 2rem;
   border-radius: 50%;
   font-size: 1.2rem;
   font-weight: bold;
@@ -116,44 +116,44 @@
 .preview-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 15px;
+  gap: 0.625rem;
+  margin-top: 0.9375rem;
 }
 
 .preview-item {
   position: relative;
   display: inline-block;
-  margin: 8px;
+  margin: 0.5rem;
 }
 
 .preview-img {
-  width: 50px;
-  height: 20px;
+  width: 3.125rem;
+  height: 1.25rem;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 0.5rem;
 }
 
 .preview-item button {
   position: absolute;
-  top: -5px;
-  right: -5px;
+  top: -0.3125rem;
+  right: -0.3125rem;
   background: red;
   color: white;
   border: none;
   border-radius: 50%;
   cursor: pointer;
-  font-size: 14px;
-  width: 20px;
-  height: 20px;
-  line-height: 18px;
+  font-size: 0.875rem;
+  width: 1.25rem;
+  height: 1.25rem;
+  line-height: 1.125rem;
   text-align: center;
 }
 
 .spinner {
-  width: 18px;
-  height: 18px;
-  border: 2px solid #fff;
-  border-top: 2px solid #333;
+  width: 1.125rem;
+  height: 1.125rem;
+  border: 0.125rem solid #fff;
+  border-top: 0.125rem solid #333;
   border-radius: 50%;
   display: inline-block;
   animation: spin 1s linear infinite;
@@ -168,14 +168,30 @@
 
 /* Animation */
 @keyframes slideIn {
-  from { transform: translateY(-20px); opacity: 0; }
+  from { transform: translateY(-1.25rem); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
 }
 
-/* Responsive */
-@media (max-width: 600px) {
+/* Mobile styles */
+@media (max-width: 640px) {
   .upload-form-container {
-    padding: 15px;
-    margin: 15px;
+    padding: 0.9375rem;
+    margin: 0.9375rem;
+  }
+}
+
+/* Tablet styles */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .upload-form-container {
+    padding: 1rem;
+    margin: 1rem auto;
+  }
+}
+
+/* Desktop styles */
+@media (min-width: 1025px) {
+  .upload-form-container {
+    padding: 1.25rem;
+    margin: 1.25rem auto;
   }
 }

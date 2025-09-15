@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import ProjectCard from "../../components/ProjectCard/ProjectCard.jsx";
 import { ProjectContext } from "../../context/ProjectProvider.jsx";
 import "./Project.css";
-import { deleteProject } from "../../utils/DeleteProject.jsx"; // <- tumhari utility
+import { deleteProject } from "../../utils/DeleteProject.jsx"; 
 import UploadProjectForm from "../../components/UploadPeoject/UploadProjectForm.jsx";
 import { uploadToCloudinary } from "../../utils/UploadtoCloudinary.jsx";
 
