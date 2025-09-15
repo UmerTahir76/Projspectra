@@ -91,6 +91,7 @@ export default function Authen({ closeModal , onRegisterSuccess, onLoginSuccess}
   const handleGoogleLogin = async () => {
     try {
       const provider = new GoogleAuthProvider();
+      provider.setCustomParameters({ prompt: 'select_account' });
       const result = await signInWithPopup(auth, provider);
       await saveUserToFirestore(result.user);
 
